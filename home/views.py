@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import View
+from .models import *
 
 
 # Create your views here.
@@ -10,7 +11,8 @@ class Base(View):
 class Index(Base):
 
     def get(self, request):
-        return render(request, 'index.html')
+        self.views['categories'] = Category.objects.all()
+        return render(request, 'index.html', self.views)
 
 
 class About(Base):
@@ -18,13 +20,14 @@ class About(Base):
     def get(self, request):
         return render(request, 'about.html')
 
+
 class Shop(Base):
 
     def get(self, request):
         return render(request, 'shop.html')
 
+
 class Contact(Base):
 
     def get(self, request):
         return render(request, 'contact.html')
-
