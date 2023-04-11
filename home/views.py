@@ -13,6 +13,8 @@ class Index(Base):
     def get(self, request):
         self.views['categories'] = Category.objects.all()
         self.views['sliders'] = Slider.objects.all()
+        self.views['subcategory'] = SubCategory.objects.all()
+        self.views['info'] = Info.objects.all()
         return render(request, 'index.html', self.views)
 
 
@@ -33,18 +35,3 @@ class Contact(Base):
     def get(self, request):
         return render(request, 'contact.html')
 
-
-class Counter:
-    count = 0
-
-    def increment(self):
-        self.count += 1
-        return ''
-
-    def decrement(self):
-        self.count -= 1
-        return ''
-
-    def double(self):
-        self.count *= 2
-        return ''
