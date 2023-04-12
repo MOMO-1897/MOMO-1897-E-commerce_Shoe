@@ -51,3 +51,10 @@ class Info(models.Model):
 
     def __str__(self):
         return self.mail
+
+class Brands(models.Model):
+    name=models.CharField(max_length=300)
+    pic=models.ImageField(upload_to='images')
+
+    def __str__(self):
+        return self.name

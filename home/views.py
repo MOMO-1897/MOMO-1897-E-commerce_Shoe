@@ -21,7 +21,12 @@ class Index(Base):
 class About(Base):
 
     def get(self, request):
-        return render(request, 'about.html')
+        self.views['categories'] = Category.objects.all()
+        self.views['sliders'] = Slider.objects.all()
+        self.views['subcategory'] = SubCategory.objects.all()
+        self.views['info'] = Info.objects.all()
+        self.views['brand']=Brands.objects.all
+        return render(request, 'about.html',self.views)
 
 
 class Shop(Base):
