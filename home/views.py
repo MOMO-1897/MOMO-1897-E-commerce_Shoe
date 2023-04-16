@@ -13,7 +13,7 @@ class Index(Base):
     def get(self, request):
         self.views['categories'] = Category.objects.all()
         self.views['sliders'] = Slider.objects.all()
-        self.views['subcategory'] = SubCategory.objects.all()
+        self.views['Product'] = Product.objects.all()
         self.views['info'] = Info.objects.all()
         return render(request, 'index.html', self.views)
 
@@ -23,7 +23,7 @@ class About(Base):
     def get(self, request):
         self.views['categories'] = Category.objects.all()
         self.views['sliders'] = Slider.objects.all()
-        self.views['subcategory'] = SubCategory.objects.all()
+        self.views['Product'] = Product.objects.all()
         self.views['info'] = Info.objects.all()
         self.views['brand'] = Brands.objects.all
         return render(request, 'about.html', self.views)
@@ -32,7 +32,13 @@ class About(Base):
 class Shop(Base):
 
     def get(self, request):
-        return render(request, 'shop.html')
+        self.views['categories'] = Category.objects.all()
+        self.views['sliders'] = Slider.objects.all()
+        self.views['Product'] = Product.objects.all()
+        self.views['info'] = Info.objects.all()
+        self.views['brand'] = Brands.objects.all
+        self.views['subcategory'] = SubCategory.objects.all
+        return render(request, 'shop.html', self.views)
 
 
 class Contact(Base):
@@ -40,7 +46,7 @@ class Contact(Base):
     def get(self, request):
         self.views['categories'] = Category.objects.all()
         self.views['sliders'] = Slider.objects.all()
-        self.views['subcategory'] = SubCategory.objects.all()
+        self.views['Product'] = Product.objects.all()
         self.views['info'] = Info.objects.all()
         self.views['brand'] = Brands.objects.all
         if request.method == "POST":
@@ -53,3 +59,15 @@ class Contact(Base):
             return render(request, 'contact.html', self.views)
         else:
             return render(request, 'contact.html', self.views)
+
+
+class ShopSingle(Base):
+
+    def get(self, request):
+        self.views['categories'] = Category.objects.all()
+        self.views['sliders'] = Slider.objects.all()
+        self.views['Product'] = Product.objects.all()
+        self.views['info'] = Info.objects.all()
+        self.views['brand'] = Brands.objects.all
+        return render(request, 'shop-single.html', self.views)
+

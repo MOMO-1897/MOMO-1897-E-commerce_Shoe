@@ -19,15 +19,24 @@ class Category(models.Model):
 
 class SubCategory(models.Model):
     name = models.CharField(max_length=300)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=5)
+
+    def __str__(self):
+        return self.name
+
+
+class Product(models.Model):
+    name = models.CharField(max_length=300)
     pic = models.ImageField(upload_to='images')
     slug = models.CharField(max_length=300)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=5)
     rating = models.IntegerField(default=2, validators=[
         MaxValueValidator(5),
         MinValueValidator(1)
 
     ])
     price = models.IntegerField(default=500)
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, default=5)
 
     def __str__(self):
         return self.name
