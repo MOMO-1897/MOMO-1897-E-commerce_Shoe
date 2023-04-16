@@ -25,8 +25,8 @@ class About(Base):
         self.views['sliders'] = Slider.objects.all()
         self.views['subcategory'] = SubCategory.objects.all()
         self.views['info'] = Info.objects.all()
-        self.views['brand']=Brands.objects.all
-        return render(request, 'about.html',self.views)
+        self.views['brand'] = Brands.objects.all
+        return render(request, 'about.html', self.views)
 
 
 class Shop(Base):
@@ -38,5 +38,18 @@ class Shop(Base):
 class Contact(Base):
 
     def get(self, request):
-        return render(request, 'contact.html')
-
+        self.views['categories'] = Category.objects.all()
+        self.views['sliders'] = Slider.objects.all()
+        self.views['subcategory'] = SubCategory.objects.all()
+        self.views['info'] = Info.objects.all()
+        self.views['brand'] = Brands.objects.all
+        if request.method == "POST":
+            name = request.POST['name']
+            email = request.POST['email']
+            subject = request.POST['subject']
+            message = request.POST['message']
+            contact = ContactUs(name=name, email=email, Subject=subject, Message=message)
+            contact.save()
+            return render(request, 'contact.html', self.views)
+        else:
+            return render(request, 'contact.html', self.views)

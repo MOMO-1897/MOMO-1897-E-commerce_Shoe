@@ -52,9 +52,22 @@ class Info(models.Model):
     def __str__(self):
         return self.mail
 
+
 class Brands(models.Model):
-    name=models.CharField(max_length=300)
-    pic=models.ImageField(upload_to='images')
+    name = models.CharField(max_length=300)
+    pic = models.ImageField(upload_to='images')
+
+    def __str__(self):
+        return self.name
+
+
+class ContactUs(models.Model):
+    sno = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=300)
+    email = models.EmailField(max_length=300)
+    Message = models.CharField(max_length=1000)
+    Subject = models.CharField(max_length=300)
+    Time = models.DateTimeField(auto_now_add=True, blank=True)
 
     def __str__(self):
         return self.name
