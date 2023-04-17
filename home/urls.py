@@ -16,6 +16,7 @@ urlpatterns = [
     path(r'contact', views.Contact.as_view(), name='contact'),
     path('contact.html', Contact.as_view(), name='contact'),
     path('shop-single.html', ShopSingle.as_view(), name='shopsingle'),
+    path('search', SearchView.as_view(), name='search'),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
