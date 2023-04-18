@@ -74,9 +74,39 @@ class ShopSingle(Base):
 
 class SearchView(Base):
     def get(self, request):
+        self.views['categories'] = Category.objects.all()
+        self.views['sliders'] = Slider.objects.all()
+        self.views['Product'] = Product.objects.all()
+        self.views['info'] = Info.objects.all()
+        self.views['brand'] = Brands.objects.all
         query = request.GET.get('query')
         if query != "":
-            self.views['search product'] = Product.objects.filter(name__icontains=query)
+            self.views['search_product'] = Product.objects.filter(name__icontains=query)
         else:
             return redirect('/')
         return render(request, 'search.html', self.views)
+
+
+class CategoryView(Base):
+    def get(self, request, slug):
+        self.views['categories'] = Category.objects.all()
+        self.views['sliders'] = Slider.objects.all()
+        self.views['Product'] = Product.objects.all()
+        self.views['info'] = Info.objects.all()
+        self.views['brand'] = Brands.objects.all
+
+        ids = Category.objects.get(slug=slug).id
+        self.views['product_category'] = Product.objects.filter(category_id=ids)
+        return render(request, 'Categoryview.html', self.views)
+
+
+class ProductView(Base):
+    def get(self, request, slug):
+        self.views['categories'] = Category.objects.all()
+        self.views['sliders'] = Slider.objects.all()
+        self.views['Product'] = Product.objects.all()
+        self.views['info'] = Info.objects.all()
+        self.views['brand'] = Brands.objects.all
+
+        self.views['product_specific'] = Product.objects.filter(slug=slug)
+        return render(request, 'product.html', self.views)

@@ -92,9 +92,9 @@
             {% for cat in categories %}
             {% if cat.rating == 5 %}
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="{{cat.pic.url}}" class="rounded-circle img-fluid border"></a>
+                <a href="/category/{{cat.slug}}"><img src="{{cat.pic.url}}" class="rounded-circle img-fluid border"></a>
                 <h5 class="text-center mt-3 mb-3">{{cat.name}} </h5>
-                <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
+                <p class="text-center" ><a class="btn btn-success" href="/category/{{cat.slug}}">Go Shop</a></p>
             </div>
             {% endif %}
             {% endfor %}
@@ -120,7 +120,7 @@
                 {% for sb in Product %}
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
-                        <a href="shop-single.html">
+                        <a href="/product/{{sb.slug}}">
                             <img src="{{sb.pic.url}}" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
@@ -134,7 +134,7 @@
                                 </li>
                                 <li class="text-muted text-right">${{sb.price}}</li>
                             </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">{{sb.name}}</a>
+                            <a href="/product/{{sb.slug}}" class="h2 text-decoration-none text-dark">{{sb.name}}</a>
                             <p class="card-text">
                                 {{sb.slug}}
                             </p>

@@ -17,8 +17,11 @@
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="{% static 'assets/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/slick.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/slick-theme.css' %}">
 <!--
-
+     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/slick.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/slick-theme.css' %}">
 TemplateMo 559 Zay Shop
 
 https://templatemo.com/tm-559-zay-shop{% static 'P
@@ -155,7 +158,7 @@ https://templatemo.com/tm-559-zay-shop{% static 'P
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Categories</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         {% for cat in categories %}
-                        <li><a class="text-decoration-none" href="#">{{cat.name}}</a></li>
+                        <li><a class="text-decoration-none" href="/category/{{cat.slug}}">{{cat.name}}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -225,15 +228,15 @@ https://templatemo.com/tm-559-zay-shop{% static 'P
     <script src="{% static 'assets/js/templatemo.js' %}"></script>
     <script src="{% static 'assets/js/custom.js' %}"></script>
     <!-- End Script -->
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
-    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/templatemo.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <script src="{% static 'assets/js/jquery-1.11.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-migrate-1.2.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/templatemo.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
     <!-- End Script -->
 
     <!-- Start Slider Script -->
-    <script src="assets/js/slick.min.js"></script>
+    <script src="{% static 'assets/js/slick.min.js' %}"></script>
     <script>
         $('#carousel-related-product').slick({
             infinite: true,

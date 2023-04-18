@@ -37,6 +37,7 @@ class Product(models.Model):
     ])
     price = models.IntegerField(default=500)
     subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, default=5)
+    specification = models.CharField(max_length=300,default="specfication is dynamic")
 
     def __str__(self):
         return self.name
@@ -80,5 +81,3 @@ class ContactUs(models.Model):
 
     def __str__(self):
         return self.name
-
-
